@@ -1,4 +1,4 @@
-import { Typography, Button, Grid } from "@mui/material"
+import { Typography, Button, Grid, Dialog, DialogTitle, DialogContent } from "@mui/material"
 import { useStyles } from "./TaskPageCss"
 import { useState, useEffect } from "react"
 import Swal from "sweetalert2"
@@ -327,11 +327,24 @@ export default function TaskPage() {
 
 
                 {/* Task form for adding and editing tasks */}
-                <TaskForm
-                    onSubmit={handleSaveTask}
-                    taskToEdit={editingTask}
-                    onCancelEdit={() => setEditingTask(null)}
-                />
+                <Dialog
+    open={Boolean(editingTask)}
+    onClose={() => setEditingTask(null)}
+    fullWidth
+    maxWidth="sm"
+>
+    <DialogTitle>
+        Edit Task
+    </DialogTitle>
+
+    <DialogContent>
+        <TaskForm
+            onSubmit={handleSaveTask}
+            taskToEdit={editingTask}
+            onCancelEdit={() => setEditingTask(null)}
+        />
+    </DialogContent>
+</Dialog>
 
 
                 <div className={classes.filterBox}>

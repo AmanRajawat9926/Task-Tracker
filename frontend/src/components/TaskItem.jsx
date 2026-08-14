@@ -23,7 +23,7 @@ export default function TaskItem({ task, onToggle, onEdit, onDelete }) {
 
             <Grid container spacing={2} className={classes.taskBox}>
 
-                <Grid size={1} className={classes.centerStyle}>
+                <Grid size={{ xs: 12, sm: 1 }} className={classes.centerStyle}>
 
                     <Checkbox
                         // Show checked checkbox if task is completed
@@ -36,7 +36,7 @@ export default function TaskItem({ task, onToggle, onEdit, onDelete }) {
                 </Grid>
 
 
-                <Grid size={7}>
+                <Grid size={{ xs: 12, sm: 7 }}>
 
                     <Typography
                         variant="h6"
@@ -70,7 +70,7 @@ export default function TaskItem({ task, onToggle, onEdit, onDelete }) {
                 </Grid>
 
 
-                <Grid size={4} className={classes.buttonGroup}>
+                <Grid size={{ xs: 12, sm: 4 }} className={classes.buttonGroup}>
 
                     <Button
                         // Send the current task to the edit function

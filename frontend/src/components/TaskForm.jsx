@@ -173,111 +173,73 @@ export default function TaskForm({ onSubmit, taskToEdit, onCancelEdit }) {
     }
 
 
-    return (
-        <div className={classes.root}>
+return (
+    <div>
 
-            <div className={classes.box}>
+        <div style={{ marginTop: 10 }}>
 
-                {/* Show different heading for add and edit mode */}
-                <h2 className={classes.heading}>
-                    {editMode ? "Edit Task" : "Add New Task"}
-                </h2>
+            <Grid spacing={2} container>
 
-                <div style={{ margin: 10, width: "96.7%" }}>
+                <Grid size={12}>
 
-                    <Grid spacing={2} container>
+                    <TextField
+                        onFocus={() => handleError("title", "")}
+                        helperText={error.title}
+                        error={Boolean(error.title)}
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        fullWidth
+                        label="Task Title"
+                        variant="outlined"
+                    />
 
-                        <Grid size={12}>
+                </Grid>
 
-                            <TextField
-                                // Clear title error when user clicks on the input
-                                onFocus={() => handleError("title", "")}
+                <Grid size={12}>
 
-                                // Show title error below the input
-                                helperText={error.title}
+                    <TextField
+                        onFocus={() => handleError("description", "")}
+                        helperText={error.description}
+                        error={Boolean(error.description)}
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        fullWidth
+                        multiline
+                        rows={4}
+                        label="Task Description"
+                        variant="outlined"
+                    />
 
-                                // Show red error style if there is an error
-                                error={Boolean(error.title)}
+                </Grid>
 
-                                // Set the input value from state
-                                value={title}
+                <Grid size={6} className={classes.centerStyle}>
 
-                                // Update title when user types
-                                onChange={(e) => setTitle(e.target.value)}
+                    <Button
+                        onClick={handleSubmit}
+                        fullWidth
+                        variant="contained"
+                    >
+                        Update
+                    </Button>
 
-                                fullWidth
-                                label="Task Title"
-                                variant="outlined"
-                            />
+                </Grid>
 
-                        </Grid>
+                <Grid size={6} className={classes.centerStyle}>
 
+                    <Button
+                        onClick={resetData}
+                        fullWidth
+                        variant="outlined"
+                    >
+                        Cancel
+                    </Button>
 
-                        <Grid size={12}>
+                </Grid>
 
-                            <TextField
-                                // Clear description error when user clicks on the input
-                                onFocus={() => handleError("description", "")}
-
-                                // Show description error below the input
-                                helperText={error.description}
-
-                                // Show red error style if there is an error
-                                error={Boolean(error.description)}
-
-                                // Set the input value from state
-                                value={description}
-
-                                // Update description when user types
-                                onChange={(e) => setDescription(e.target.value)}
-
-                                fullWidth
-                                multiline
-                                rows={4}
-                                label="Task Description"
-                                variant="outlined"
-                            />
-
-                        </Grid>
-
-
-                        <Grid size={6} className={classes.centerStyle}>
-
-                            <Button
-                                // Submit the form when clicked
-                                onClick={handleSubmit}
-
-                                fullWidth
-                                variant="contained"
-                            >
-                                {/* Show Update in edit mode, otherwise Save */}
-                                {editMode ? "Update" : "Save"}
-                            </Button>
-
-                        </Grid>
-
-
-                        <Grid size={6} className={classes.centerStyle}>
-
-                            <Button
-                                // Reset or cancel the form
-                                onClick={resetData}
-
-                                fullWidth
-                                variant="outlined"
-                            >
-                                {/* Show Cancel in edit mode, otherwise Reset */}
-                                {editMode ? "Cancel" : "Reset"}
-                            </Button>
-
-                        </Grid>
-
-                    </Grid>
-
-                </div>
-
-            </div>
+            </Grid>
 
         </div>
-    )
+
+    </div>
+)
 }
